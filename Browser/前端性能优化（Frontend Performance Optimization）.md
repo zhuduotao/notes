@@ -1,0 +1,258 @@
+---
+created: 2026-04-16
+updated: 2026-04-16
+tags:
+  - frontend
+  - performance
+  - web-vitals
+  - optimization
+  - core-web-vitals
+aliases:
+  - Frontend Performance Optimization
+  - Web Performance
+  - 性能优化
+source_type: mixed
+source_urls:
+  - https://web.dev/learn/performance/
+  - https://web.dev/articles/vitals
+  - https://web.dev/articles/lcp
+  - https://web.dev/articles/inp
+  - https://web.dev/articles/cls
+  - https://developer.mozilla.org/en-US/docs/Web/API/Performance_API
+status: verified
+---
+
+## 是什么
+
+前端性能优化是指通过一系列技术手段和策略，减少页面加载时间、提升交互响应速度、改善视觉稳定性，从而为用户提供更好的浏览体验。它涵盖从网络请求、资源加载、渲染管线到运行时执行的完整链路。
+
+## 为什么重要
+
+- **用户体验直接影响业务指标**：页面加载时间每增加 1 秒，转化率可能下降 7%（Google 研究数据）
+- **SEO 排名因素**：Core Web Vitals 自 2021 年起成为 Google 搜索排名信号
+- **可访问性**：性能优化与无障碍访问密切相关，低性能设备用户同样应获得可用体验
+- **资源成本**：减少不必要的数据传输可降低带宽成本和服务器负载
+
+## Core Web Vitals 核心指标体系
+
+Core Web Vitals 是 Google 提出的统一质量信号，代表所有网页都应测量的关键用户体验维度。当前（2024 年起）包含三项稳定指标：
+
+| 指标 | 全称 | 衡量维度 | 良好阈值 | 测量方式 |
+|------|------|----------|----------|----------|
+| **LCP** | Largest Contentful Paint | 加载性能 | ≤ 2.5 秒 | 字段 + 实验室 |
+| **INP** | Interaction to Next Paint | 交互响应性 | ≤ 200 毫秒 | 字段 + 实验室 |
+| **CLS** | Cumulative Layout Shift | 视觉稳定性 | ≤ 0.1 | 字段 + 实验室 |
+
+> 阈值基于第 75 百分位（p75）的页面加载数据，需按移动端和桌面端分别评估。
+
+### LCP（最大内容绘制）
+
+衡量页面主要内容可见所需的时间。LCP 元素通常是图片、视频 poster 或大块文本。
+
+**优化方向**：
+- 优化服务器响应时间（TTFB）
+- 消除渲染阻塞资源（render-blocking resources）
+- 使用 `<link rel="preload">` 预加载 LCP 资源
+- 图片使用现代格式（WebP、AVIF）并正确设置尺寸
+- 服务端渲染（SSR）或静态生成（SSG）
+
+### INP（交互到下一次绘制）
+
+衡量用户交互（点击、触摸、键盘输入）到浏览器绘制下一帧之间的延迟。INP 关注的是**整个交互生命周期中最慢的一次交互**，而非首次。
+
+**INP 替代 FID 的背景**：
+- FID（First Input Delay）仅测量首次交互，无法反映页面整体交互质量
+- INP 自 2023 年进入 pending 阶段，2024 年 3 月起正式成为 Core Web Vitals 稳定指标
+
+**优化方向**：
+- 减少主线程长任务（long tasks，> 50ms）
+- 使用 Web Workers 将计算密集型任务移出主线程
+- 拆分 JavaScript 代码，避免单次加载过多代码
+- 使用 `requestIdleCallback` 或 `setTimeout` 延迟非关键工作
+- 避免大型 DOM 操作和复杂 CSS 选择器
+
+### CLS（累积布局偏移）
+
+衡量页面生命周期内发生的意外布局偏移总量。计算公式为：`影响分数 × 距离分数`。
+
+**常见原因**：
+- 未指定尺寸的图片或视频
+- 动态插入的内容（广告、iframe、通知横幅）
+- 字体加载导致的 FOIT/FOUT（Flash of Invisible/Unstyled Text）
+- 异步加载的 CSS 导致样式重排
+
+**优化方向**：
+- 为所有媒体元素设置显式 `width` 和 `height` 属性
+- 使用 CSS `aspect-ratio` 属性预留空间
+- 避免在现有内容上方插入新内容
+- 使用 `font-display: optional` 或 `swap` 控制字体加载行为
+- 动画使用 `transform` 和 `opacity` 属性（触发合成而非重排）
+
+## 辅助指标
+
+这些指标虽不属于 Core Web Vitals，但对诊断性能问题至关重要：
+
+| 指标 | 说明 | 与 Core Web Vitals 的关系 |
+|------|------|---------------------------|
+| **TTFB** | Time to First Byte，服务器响应时间 | 直接影响 LCP |
+| **FCP** | First Contentful Paint，首次内容绘制 | LCP 的前置指标 |
+| **TBT** | Total Blocking Time，总阻塞时间（实验室指标） | INP 的实验室代理指标 |
+| **SI** | Speed Index，速度指数 | 反映页面可见内容填充速度 |
+
+> **注意**：Lighthouse 无法测量 INP（无用户交互），使用 TBT 作为实验室代理指标。
+
+## 关键渲染路径（Critical Rendering Path）
+
+浏览器从接收 HTML 到渲染像素到屏幕的完整流程：
+
+```
+HTML → DOM
+CSS → CSSOM
+DOM + CSSOM → Render Tree
+Render Tree → Layout（计算几何信息）
+Layout → Paint（绘制像素）
+Paint → Composite（合成图层）
+```
+
+**优化原则**：
+- **减少关键资源数量**：内联关键 CSS，延迟非关键 JS
+- **减小关键资源体积**：压缩、Tree Shaking、代码分割
+- **优化加载顺序**：使用 `async`/`defer` 控制脚本执行时机
+  - `<script src="..." async>`：下载不阻塞解析，下载完成后立即执行（可能阻塞渲染）
+  - `<script src="..." defer>`：下载不阻塞解析，延迟到 DOM 解析完成后按顺序执行
+
+## 资源加载优化
+
+### 图片优化
+
+- 使用 `<picture>` 元素和 `srcset` 提供多分辨率图片
+- 使用 `loading="lazy"` 延迟加载视口外图片（原生支持）
+- 使用现代图片格式：WebP（广泛支持）、AVIF（更新，压缩率更高）
+- 使用 CDN 和响应式图片服务自动适配设备
+
+### 字体优化
+
+- 使用 `font-display` 控制字体加载策略：
+  - `swap`：先显示后备字体，加载完成后替换（可能引起 CLS）
+  - `optional`：仅在字体已缓存时使用，避免布局偏移
+- 使用 `preload` 预加载关键字体：`<link rel="preload" href="font.woff2" as="font" crossorigin>`
+- 字体子集化（subsetting）减少文件体积
+
+### JavaScript 优化
+
+- **代码分割（Code Splitting）**：按路由或功能拆分 bundle
+- **Tree Shaking**：消除未使用的导出（需 ES Module 格式）
+- **动态导入**：`import()` 实现按需加载
+- **延迟执行**：非关键脚本使用 `defer` 或动态插入
+
+### 资源提示（Resource Hints）
+
+| 提示类型 | 用途 | 优先级 |
+|----------|------|--------|
+| `<link rel="preconnect">` | 提前建立 DNS/TLS/TCP 连接 | 高 |
+| `<link rel="dns-prefetch">` | 仅提前解析 DNS | 中 |
+| `<link rel="preload">` | 预加载当前页面必需资源 | 最高 |
+| `<link rel="prefetch">` | 预加载未来可能需要的资源 | 低 |
+| `<link rel="prerender">` | 预渲染整个页面 | 最高（谨慎使用） |
+
+## 运行时优化
+
+### 避免主线程阻塞
+
+- 单次任务执行时间控制在 **50ms 以内**（为用户输入留出 100ms 响应窗口）
+- 使用 Chrome DevTools Performance 面板识别长任务
+- 拆分大任务：使用 `setTimeout`、`requestAnimationFrame` 或 `MessageChannel`
+
+### Web Workers
+
+将计算密集型任务移至后台线程，避免阻塞主线程：
+
+```js
+// main.js
+const worker = new Worker('worker.js');
+worker.postMessage(data);
+worker.onmessage = (e) => {
+  console.log('Result:', e.data);
+};
+
+// worker.js
+self.onmessage = (e) => {
+  const result = heavyComputation(e.data);
+  self.postMessage(result);
+};
+```
+
+**限制**：
+- Worker 无法访问 DOM、`window`、`document`
+- 通信通过 `postMessage`，数据会被结构化克隆（有性能开销）
+- 适合：数据处理、加密、图像处理、复杂计算
+
+### 虚拟列表（Virtual Scrolling）
+
+当列表项数量巨大时，仅渲染视口内可见元素：
+
+- 适用于：长列表、表格、无限滚动场景
+- 常见库：`react-window`、`vue-virtual-scroller`
+- 核心原理：计算可见区域，动态创建/销毁 DOM 节点
+
+## 测量工具
+
+### 字段测量（Real User Monitoring, RUM）
+
+反映真实用户体验：
+
+| 工具 | 说明 |
+|------|------|
+| **Chrome User Experience Report (CrUX)** | 匿名真实用户数据，支持 PageSpeed Insights、Search Console |
+| **web-vitals 库** | [GoogleChrome/web-vitals](https://github.com/GoogleChrome/web-vitals)，生产环境测量 Core Web Vitals |
+| **Chrome DevTools Performance 面板** | 录制并分析页面性能 |
+| **Search Console Core Web Vitals 报告** | 按页面分组展示 CWV 状态 |
+
+### 实验室测量（Lab Tools）
+
+用于开发和回归测试：
+
+| 工具 | 说明 |
+|------|------|
+| **Lighthouse** | 自动化审计工具，集成于 DevTools 和 CI |
+| **WebPageTest** | 多地点、多设备、多网络的详细性能测试 |
+| **Chrome DevTools** | 本地调试，Performance、Network、Memory 面板 |
+
+> **重要区别**：字段测量反映真实用户体验，实验室测量用于开发调试。两者数据可能不同，**字段测量是最终判断标准**。
+
+## 常见误区
+
+1. **只关注加载速度，忽略交互响应**：INP 成为 CWV 后，运行时性能同等重要
+2. **过度优化导致复杂度上升**：优化应基于数据，而非猜测；使用 RUM 数据定位瓶颈
+3. **实验室数据代替真实数据**：Lighthouse 分数好不代表用户体验好，必须结合 CrUX
+4. **忽略移动端**：移动端性能通常远差于桌面端，需单独测试和优化
+5. **一次性优化**：性能是持续过程，需建立监控和回归测试机制
+
+## 优化优先级建议
+
+根据 Chrome 团队建议，最有效的优化方向（按影响力排序）：
+
+1. **消除渲染阻塞资源**：内联关键 CSS，延迟/异步加载非关键 JS
+2. **优化 LCP 资源**：预加载、压缩、使用 CDN
+3. **减少 JavaScript 执行时间**：代码分割、Tree Shaking、移除未使用代码
+4. **优化第三方脚本**：延迟加载、使用 `preconnect`、评估必要性
+5. **优化图片**：现代格式、响应式、懒加载
+
+## 相关概念
+
+- [[渲染管线（Rendering Pipeline）]] — 浏览器渲染流程，性能优化的理论基础
+- [[Chrome 从输入 URL 到页面渲染的完整流程]] — 网络到渲染的完整链路
+- [[HTML script 标签 async 与 defer 属性详解]] — 脚本加载控制
+- [[内联缓存 (Inline Caching)]] — V8 引擎运行时优化机制
+- [[Turbofan 编译器解析]] — V8 JIT 编译器工作原理
+
+## 参考资料
+
+- [Google: Learn Performance](https://web.dev/learn/performance/) — web.dev 官方性能学习课程
+- [Google: Web Vitals](https://web.dev/articles/vitals) — Core Web Vitals 官方定义和阈值
+- [Google: Optimize LCP](https://web.dev/articles/optimize-lcp) — LCP 优化指南
+- [Google: Optimize INP](https://web.dev/articles/optimize-inp) — INP 优化指南
+- [Google: Optimize CLS](https://web.dev/articles/optimize-cls) — CLS 优化指南
+- [Google: Defining Core Web Vitals Thresholds](https://web.dev/articles/defining-core-web-vitals-thresholds) — 阈值制定依据
+- [MDN: Performance API](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) — Performance Web API 规范
+- [GoogleChrome/web-vitals](https://github.com/GoogleChrome/web-vitals) — 生产环境 CWV 测量库

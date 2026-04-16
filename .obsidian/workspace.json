@@ -1,0 +1,239 @@
+{
+  "main": {
+    "id": "cd0ebfabd85a7542",
+    "type": "split",
+    "children": [
+      {
+        "id": "637db63affd92889",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4bccbefc008af757",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Database/MySQL/MySQL 日志类型与作用.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MySQL 日志类型与作用"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "66fd622157d09790",
+    "type": "split",
+    "children": [
+      {
+        "id": "f22581f29471cf07",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "673f68d76e1aa0ac",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "579d3b5653f4e857",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "d67bb21677217ded",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a36892649fefd769",
+    "type": "split",
+    "children": [
+      {
+        "id": "2c3f7c52c0724af3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ab06252a52daec7e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "欢迎.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "欢迎 的反向链接列表"
+            }
+          },
+          {
+            "id": "783269420317fbaa",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "欢迎.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "欢迎 的出链列表"
+            }
+          },
+          {
+            "id": "f321ada2933f11dc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "231d251c1ecab9d4",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "0a13c61c77012c59",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Database/MySQL/MySQL 日志类型与作用.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "MySQL 日志类型与作用 的大纲"
+            }
+          },
+          {
+            "id": "4a59bedd6c1994ae",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 5
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "obsidian-git:Open Git source control": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
+    }
+  },
+  "active": "4bccbefc008af757",
+  "lastOpenFiles": [
+    "Excalidraw/Drawing 2026-04-16 10.30.55.excalidraw.md",
+    "Database/MySQL/MySQL 日志类型与作用.md",
+    "Excalidraw",
+    "Browser/前端性能优化（Frontend Performance Optimization）.md",
+    "未命名.base",
+    "Observability/Tracing/全链路tracing方案(skywalking+kafka+clickhouse+grafana).md",
+    "Observability/Tracing",
+    "Observability",
+    "Database/MySQL/MySQL 主从复制与读写分离方案.md",
+    "Database/MySQL/生产环境 MySQL 表结构变更（Schema Migration）指南.md",
+    "Database/MySQL/MySQL EXPLAIN 语句详解.md",
+    "Database/MySQL/索引的数据结构.md",
+    "Database/NoSQL/Redis 版本变更与演进历史.md",
+    "Database/SQL/生产环境慢 SQL 检测方案.md",
+    "Database/MySQL",
+    "Database/MySQL/MySQL 查询优化与工程实践.md",
+    "Database/NoSQL/Valkey 介绍与核心概念.md",
+    "Database/MySQL 的 Log 类型详解.md",
+    "Database/NoSQL/Redis 8.4 核心能力与功能详解.md",
+    "Database/数据库事务的隔离级别.md",
+    "Database/NoSQL",
+    "Database/SQL",
+    "Database/SQL/不同数据库的事务区别.md",
+    "Network/TCP-IP 协议.md",
+    "V8/V8 对象模型解析.md",
+    "Network/HTTPS 证书详解（类型、算法、提供商与最佳实践）.md",
+    "Network/HTTP3 连接过程与加速技术详解.md",
+    "面试/前端面试题汇总.md",
+    "Java/Java 锁机制深度讲解.md",
+    "Java",
+    "V8/内联缓存 (Inline Caching).md",
+    "V8/V8 数组处理机制.md",
+    "Browser/Chrome 多进程模型.md",
+    "JavaScript/模块系统/JavaScript 模块规范对比：CommonJS、AMD、CMD、UMD、ESM.md",
+    "JavaScript/模块系统",
+    "Users/tristanzhu/Documents/notes/Network",
+    "未命名.canvas"
+  ]
+}
