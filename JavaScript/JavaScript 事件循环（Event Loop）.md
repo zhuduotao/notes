@@ -12,6 +12,8 @@ aliases:
   - 事件循环
   - 宏任务与微任务
   - JavaScript 执行模型
+  - 同步异步任务执行顺序
+  - JS 任务执行顺序
 source_type: mixed
 source_urls:
   - 'https://html.spec.whatwg.org/multipage/webappapis.html#event-loops'
