@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "d5fc95ce40f07759",
+        "id": "bad17c8b56e45247",
         "type": "tabs",
         "children": [
           {
-            "id": "2cb88f9e59e880e3",
+            "id": "77e46be4ccac395e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Browser/Chrome 从输入 URL 到页面渲染的完整流程.md",
+                "file": "React/React 事件机制与设计思路.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chrome 从输入 URL 到页面渲染的完整流程"
+              "title": "React 事件机制与设计思路"
             }
           }
         ]
@@ -180,7 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 535.5
+    "width": 273.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -195,44 +195,44 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "2cb88f9e59e880e3",
+  "active": "673f68d76e1aa0ac",
   "lastOpenFiles": [
-    "React/React 事件机制与设计思路.md",
-    "面试/React 面试原理与考点详解.md",
-    "Network/获取用户真实 IP 详解（前后端与多层路由方案）.md",
-    "Frontend Performance Optimization/使用 Pretext 进行性能和排版优化.md",
+    "AI/RAG/RAG 中向量数据库的选型.md",
+    "AI/RAG/RAG Embedding 模型选择与微调指南.md",
+    "AI/RAG/RAG 系统评估方案：召回准确率与完整度.md",
+    "JavaScript/浏览器的事件冒泡.md",
+    "AI/LLM ReAct 模式详解.md",
+    "CloudNative/Docker/Dockerfile 完整指南.md",
+    "CloudNative/Deployment/docker-compose 结合 Kubernetes 快速部署项目的实践.md",
+    "CloudNative/Deployment",
+    "CloudNative/Docker/Docker Compose 完整指南.md",
+    "CloudNative/Docker/Docker 核心原理与架构.md",
+    "Java/AQS（AbstractQueuedSynchronizer）深度解析.md",
+    "Java/Java Collections Framework：实现与线程安全.md",
+    "Java/ArrayList与LinkedList的区别与Java版本演进.md",
+    "AI/Redis 作为 LLM 缓存的方案.md",
+    "OS/Linux 文件系统架构与设计详解.md",
+    "AI/RAG/RAG Chunking 分块策略与实践.md",
+    "AI/RAG",
+    "AI",
+    "CloudNative/Docker",
+    "Java/Java 零拷贝（Zero-Copy）实现详解.md",
     "Browser/HTML 语义化标签详解.md",
-    "Frontend Performance Optimization/Million.js 前端性能优化：原理与适用场景.md",
-    "面试/前端面试题汇总.md",
+    "Browser/HTML script 标签 async 与 defer 属性详解.md",
+    "Browser/Chrome 的内存限制.md",
     "Browser/Chrome 多进程模型.md",
     "Browser/Chrome 从输入 URL 到页面渲染的完整流程.md",
-    "Excalidraw/Drawing 2026-04-18 13.00.14.excalidraw.md",
-    "Java/Java 零拷贝（Zero-Copy）实现详解.md",
+    "CloudNative/Kubernetes/Kubernetes (K8s) 介绍与常用组件.md",
+    "CloudNative/Kubernetes/Kubernetes 面试题汇总.md",
+    "SEO/Bing SEO 入门指南.md",
+    "SEO/百度 SEO 入门指南.md",
+    "Middleware/Kafka/Kafka 如何避免消息丢失.md",
+    "SEO",
     "Excalidraw",
-    "React/React 性能优化思路与常用工具.md",
-    "React/React Fiber 架构详解.md",
-    "React/React Hooks 详解.md",
     "React",
-    "OS/Linux 内存管理机制详解.md",
-    "Java/Java 版本演进与 LTS 版本特性.md",
-    "Java/String 在不同版本中的演进与优化.md",
-    "OS/Linux 文件系统架构与设计详解.md",
-    "Middleware/Kafka/Kafka 是如何实现高性能的.md",
-    "Middleware/Kafka/Kafka 如何实现广播.md",
-    "Middleware/Kafka/Kafka Consumer Rebalance 算法解析.md",
-    "Middleware/Redis/Redis 如何实现动态扩缩容.md",
-    "Middleware/Redis/Valkey 介绍与核心概念.md",
-    "Middleware/Redis/Redis 核心原理与架构详解.md",
-    "CloudNative/Kubernetes/基于 K8s 的服务发现.md",
-    "Middleware/Redis/Redis 8.4 核心能力与功能详解.md",
     "CloudNative/Kubernetes",
     "CloudNative",
     "Computer Architecture",
-    "OS",
-    "Database/Search",
-    "Frontend Performance Optimization",
-    "Middleware/Kafka",
-    "Middleware",
     "未命名.canvas"
   ]
 }

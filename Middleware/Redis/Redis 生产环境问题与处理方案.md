@@ -1,6 +1,6 @@
 ---
-created: 2026-04-16
-updated: 2026-04-16
+created: 2026-04-16T00:00:00.000Z
+updated: '2026-04-20T00:00:00.000Z'
 tags:
   - database
   - redis
@@ -18,14 +18,20 @@ aliases:
   - Redis in Production
 source_type: mixed
 source_urls:
-  - https://redis.io/docs/latest/operate/oss_and_stack/management/
-  - https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/
-  - https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/
-  - https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/memory-optimization/
-  - https://redis.io/docs/latest/operate/oss_and_stack/management/troubleshooting/
-  - https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/
-  - https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/
-  - https://redis.io/docs/latest/operate/oss_and_stack/management/security/
+  - 'https://redis.io/docs/latest/operate/oss_and_stack/management/'
+  - 'https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/'
+  - >-
+    https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/
+  - >-
+    https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/memory-optimization/
+  - >-
+    https://redis.io/docs/latest/operate/oss_and_stack/management/troubleshooting/
+  - 'https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/'
+  - 'https://redis.io/docs/latest/operate/oss_and_stack/management/scaling/'
+  - 'https://redis.io/docs/latest/operate/oss_and_stack/management/security/'
+  - 'https://redis.io/docs/latest/commands/hotkeys/'
+  - 'https://redis.io/docs/latest/commands/hotkeys-start/'
+  - 'https://redis.io/docs/latest/commands/object-freq/'
 status: verified
 ---
 
@@ -140,6 +146,72 @@ redis-cli UNLINK mykey
 **规避方案**：
 - **按峰值内存规划容量**：如果 workload 峰值需要 10 GB，即使大部分时间只需 5 GB，也需按 10 GB 配置
 - 理解 `mem_fragmentation_ratio = used_memory_rss / used_memory` 的含义：当大量键被删除后，该比值会虚高，不代表真正的碎片问题
+
+### 1.5 热键（Hot Keys）
+
+**定义**：热键是指被高频访问的键，其访问频率显著高于其他键。Redis 8.6+ 的 HOTKEYS 命令基于两个指标定义热键[^3]：
+- **CPU 时间占比**：键消耗的 CPU 时间占 Redis 总 CPU 时间的百分比
+- **网络字节占比**：键的网络流量（输入+输出）占 Redis 总网络流量的百分比
+
+**表现**：
+- 单个键承载过高的访问压力，导致热点问题
+- 在 Cluster 环境中，热键所在节点成为瓶颈，其他节点负载不均衡
+- 高频读操作可能造成带宽瓶颈
+- 高频写操作可能导致延迟抖动
+
+**检测方式**：
+
+| 方法 | 版本要求 | 说明 |
+|------|---------|------|
+| `HOTKEYS START/GET` | Redis 8.6+ | 官方热键检测命令，基于 CPU 和网络指标 |
+| `OBJECT FREQ key` | Redis 4.0+ | 需要 LFU 驱逐策略，返回键的对数访问频率计数器 |
+| `redis-cli --hotkeys` | Redis 8.6+ | 命令行工具，执行热键检测扫描 |
+| 代理层统计 | 所有版本 | 在客户端或代理层记录访问统计 |
+| MONITOR 分析 | 所有版本 | 使用 `MONITOR` 命令（谨慎使用，性能影响大） |
+
+**Redis 8.6+ HOTKEYS 命令工作流**[^4]：
+
+```bash
+# 启动热键检测，追踪 CPU 和网络指标，检测 top 10
+redis-cli HOTKEYS START METRICS 2 CPU NET COUNT 10 DURATION 60
+
+# 获取检测结果
+redis-cli HOTKEYS GET
+
+# 停止追踪（保留数据）
+redis-cli HOTKEYS STOP
+
+# 释放追踪资源
+redis-cli HOTKEYS RESET
+```
+
+**处理方式**：
+
+```bash
+# 方式一：拆分热键为多个子键（本地缓存）
+# 例如：将 user:1000:profile 拆分为 user:1000:profile:v1/v2/v3
+# 应用端随机选择子键读取，减少单键压力
+
+# 方式二：使用本地缓存
+# 在应用端缓存热键数据，减少对 Redis 的访问频率
+
+# 方式三：增加 Replica 负载读请求
+# 将热键的读请求分散到多个从节点
+
+# 方式四：在 Cluster 中迁移热键到独立节点
+# 使用 CLUSTER SETSLOT 将热键迁移到负载较低的节点
+```
+
+**规避方案**：
+- **设计阶段避免热键**：
+  - 数据拆分：将高频访问的数据分散到多个键（如分片计数器、分片排行榜）
+  - 本地缓存：对高频读数据在应用端做 LRU 缓存
+  - 避免全量数据缓存：如排行榜只缓存 Top N 而非全量
+- **Cluster 环境优化**：
+  - 监控各节点负载，发现不均衡时检查热键分布
+  - 使用 Hash Tag 将相关键集中到同一槽位时要考虑热键风险
+- **设置合理 TTL**：避免热键长期占用资源
+- **使用读写分离**：将热键的读请求分流到从节点
 
 ---
 
@@ -627,3 +699,5 @@ transparent_hugepage=never  # sysctl
 
 [^1]: Fork 时间数据来源于 [Redis 官方延迟诊断文档](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/#fork-time-in-different-systems)
 [^2]: 网络延迟数据来源于 [Redis 官方延迟诊断文档](https://redis.io/docs/latest/operate/oss_and_stack/management/optimization/latency/#latency-induced-by-network-and-communication)
+[^3]: 热键定义来源于 [Redis HOTKEYS 命令文档](https://redis.io/docs/latest/commands/hotkeys/)
+[^4]: HOTKEYS 命令参数来源于 [Redis HOTKEYS START 命令文档](https://redis.io/docs/latest/commands/hotkeys-start/)
