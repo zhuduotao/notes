@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Java 零拷贝（Zero-Copy）实现详解.md",
+                "file": "Browser/Chrome 从输入 URL 到页面渲染的完整流程.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java 零拷贝（Zero-Copy）实现详解"
+              "title": "Chrome 从输入 URL 到页面渲染的完整流程"
             }
           }
         ]
@@ -197,6 +197,23 @@
   },
   "active": "2cb88f9e59e880e3",
   "lastOpenFiles": [
+    "React/React 事件机制与设计思路.md",
+    "面试/React 面试原理与考点详解.md",
+    "Network/获取用户真实 IP 详解（前后端与多层路由方案）.md",
+    "Frontend Performance Optimization/使用 Pretext 进行性能和排版优化.md",
+    "Browser/HTML 语义化标签详解.md",
+    "Frontend Performance Optimization/Million.js 前端性能优化：原理与适用场景.md",
+    "面试/前端面试题汇总.md",
+    "Browser/Chrome 多进程模型.md",
+    "Browser/Chrome 从输入 URL 到页面渲染的完整流程.md",
+    "Excalidraw/Drawing 2026-04-18 13.00.14.excalidraw.md",
+    "Java/Java 零拷贝（Zero-Copy）实现详解.md",
+    "Excalidraw",
+    "React/React 性能优化思路与常用工具.md",
+    "React/React Fiber 架构详解.md",
+    "React/React Hooks 详解.md",
+    "React",
+    "OS/Linux 内存管理机制详解.md",
     "Java/Java 版本演进与 LTS 版本特性.md",
     "Java/String 在不同版本中的演进与优化.md",
     "OS/Linux 文件系统架构与设计详解.md",
@@ -208,31 +225,14 @@
     "Middleware/Redis/Redis 核心原理与架构详解.md",
     "CloudNative/Kubernetes/基于 K8s 的服务发现.md",
     "Middleware/Redis/Redis 8.4 核心能力与功能详解.md",
-    "Network/HTTPS 2.0 连接过程与加速技术详解.md",
-    "Middleware/Kafka/Kafka 事务消息使用指南.md",
-    "Middleware/Kafka/Kafka 如何避免消息丢失.md",
-    "Network/NAT打洞（NAT穿透）详解.md",
-    "Network/HTTPS 证书详解（类型、算法、提供商与最佳实践）.md",
-    "Network/HTTP1.1 vs HTTP2 vs HTTP3 对比.md",
-    "Network/TCP-IP 协议.md",
-    "Network/详解UDP协议.md",
-    "Network/HTTP3 连接过程与加速技术详解.md",
-    "OS/Linux I_O 模型：BIO、NIO、AIO 与系统实现.md",
-    "CloudNative/Kubernetes/Kubernetes (K8s) 介绍与常用组件.md",
     "CloudNative/Kubernetes",
     "CloudNative",
-    "Java/Java 零拷贝（Zero-Copy）实现详解.md",
-    "Database/SQL/生产环境慢 SQL 检测方案.md",
-    "Middleware/Redis/Redis 生产环境问题与处理方案.md",
-    "Database/SQL/不同数据库的事务区别.md",
     "Computer Architecture",
     "OS",
     "Database/Search",
     "Frontend Performance Optimization",
     "Middleware/Kafka",
     "Middleware",
-    "Excalidraw",
-    "未命名.base",
     "未命名.canvas"
   ]
 }
