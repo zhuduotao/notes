@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "bad17c8b56e45247",
+        "id": "482eed4af4b9c398",
         "type": "tabs",
         "children": [
           {
-            "id": "77e46be4ccac395e",
+            "id": "e38806a3d0ae98aa",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "React/React 事件机制与设计思路.md",
+                "file": "Browser/浏览器 Same Origin 与 Same Site 区别详解.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "React 事件机制与设计思路"
+              "title": "浏览器 Same Origin 与 Same Site 区别详解"
             }
           }
         ]
@@ -195,44 +195,44 @@
       "obsidian-excalidraw-plugin:新建绘图文件": false
     }
   },
-  "active": "673f68d76e1aa0ac",
+  "active": "e38806a3d0ae98aa",
   "lastOpenFiles": [
-    "AI/RAG/RAG 中向量数据库的选型.md",
-    "AI/RAG/RAG Embedding 模型选择与微调指南.md",
-    "AI/RAG/RAG 系统评估方案：召回准确率与完整度.md",
-    "JavaScript/浏览器的事件冒泡.md",
-    "AI/LLM ReAct 模式详解.md",
-    "CloudNative/Docker/Dockerfile 完整指南.md",
-    "CloudNative/Deployment/docker-compose 结合 Kubernetes 快速部署项目的实践.md",
-    "CloudNative/Deployment",
-    "CloudNative/Docker/Docker Compose 完整指南.md",
-    "CloudNative/Docker/Docker 核心原理与架构.md",
-    "Java/AQS（AbstractQueuedSynchronizer）深度解析.md",
-    "Java/Java Collections Framework：实现与线程安全.md",
-    "Java/ArrayList与LinkedList的区别与Java版本演进.md",
-    "AI/Redis 作为 LLM 缓存的方案.md",
-    "OS/Linux 文件系统架构与设计详解.md",
-    "AI/RAG/RAG Chunking 分块策略与实践.md",
-    "AI/RAG",
-    "AI",
-    "CloudNative/Docker",
-    "Java/Java 零拷贝（Zero-Copy）实现详解.md",
-    "Browser/HTML 语义化标签详解.md",
-    "Browser/HTML script 标签 async 与 defer 属性详解.md",
     "Browser/Chrome 的内存限制.md",
     "Browser/Chrome 多进程模型.md",
     "Browser/Chrome 从输入 URL 到页面渲染的完整流程.md",
+    "Browser/Chrome WebRTC P2P 连接实现详解.md",
+    "Java/Java 死锁与活锁：原理与 Demo 示例.md",
+    "未命名.md",
+    "Middleware/Redis/Redis 分布式锁实现方案.md",
+    "Middleware/Redis/Redis 事务使用与回滚处理.md",
+    "DistributedSystem/死锁与活锁.md",
+    "Computer Architecture/缓存一致性详解.md",
+    "React/Zustand 组件更新优化机制.md",
+    "Middleware/Redis/Redis 集群方案与高可用架构.md",
+    "React/Redux 组件更新优化机制.md",
+    "DistributedSystem/2PC 与 3PC 协议.md",
+    "DistributedSystem/Viewstamped Replication 协议.md",
+    "DistributedSystem/PBFT 拜占庭容错算法.md",
+    "DistributedSystem/ZAB 协议.md",
+    "DistributedSystem/Paxos 共识算法.md",
+    "DistributedSystem/Raft 共识算法.md",
+    "DistributedSystem/分布式共识算法对比.md",
+    "DistributedSystem",
+    "Browser/浏览器 Same Origin 与 Same Site 区别详解.md",
+    "SEO/百度 SEO 入门指南.md",
     "CloudNative/Kubernetes/Kubernetes (K8s) 介绍与常用组件.md",
     "CloudNative/Kubernetes/Kubernetes 面试题汇总.md",
-    "SEO/Bing SEO 入门指南.md",
-    "SEO/百度 SEO 入门指南.md",
-    "Middleware/Kafka/Kafka 如何避免消息丢失.md",
+    "AI/RAG/RAG 系统评估方案：召回准确率与完整度.md",
+    "Browser/iframe 与父页面通信方案详解.md",
+    "AI/langchain",
+    "CloudNative/Deployment",
+    "AI/RAG",
+    "AI",
+    "CloudNative/Docker",
     "SEO",
     "Excalidraw",
     "React",
     "CloudNative/Kubernetes",
-    "CloudNative",
-    "Computer Architecture",
     "未命名.canvas"
   ]
 }
