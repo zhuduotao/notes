@@ -24,6 +24,7 @@ source_urls:
     https://github.com/openjdk/jdk/tree/master/src/java.base/share/classes/java/util/concurrent
 status: verified
 ---
+
 ## 概述
 
 Java Collections Framework 是 JDK 1.2 引入的一套统一架构，用于表示和操作集合（一组对象）。框架定义了核心接口、多种实现类、算法工具，以及并发版本，为开发者提供了高效、可复用的数据结构解决方案[^1]。
