@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Java 锁机制深度讲解.md",
+                "file": "面试/Vue 面试原理与考点详解.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java 锁机制深度讲解"
+              "title": "Vue 面试原理与考点详解"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "synchronized",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -180,7 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 273.5
+    "width": 562.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,44 +196,44 @@
       "mermaid-tools:Open Mermaid Toolbar": false
     }
   },
-  "active": "673f68d76e1aa0ac",
+  "active": "4a59bedd6c1994ae",
   "lastOpenFiles": [
-    "Java/Java Collections Framework：实现与线程安全.md",
-    "Java/AQS（AbstractQueuedSynchronizer）深度解析.md",
-    "Java/ArrayList与LinkedList的区别与Java版本演进.md",
-    "Java/Java 死锁与活锁：原理与 Demo 示例.md",
-    "Java/JVM/Java 对象头（Object Header）详解.md",
-    "Java/Java volatile 关键字实现原理.md",
-    "Java/JVM",
-    "Middleware/Redis/Redis 8.4 核心能力与功能详解.md",
-    "Java/Spring/Spring AOP 实现原理详解.md",
-    "Middleware/Redis/Redis 事务使用与回滚处理.md",
+    "React/React useState 原理详解.md",
+    "React/React useEffect 原理详解.md",
+    "React/React Class Component 与 Function Component 区别与生命周期.md",
+    "Frontend/Vue/详解 Vue Composition API.md",
+    "React/React Diff 算法详解.md",
+    "Frontend/Vue/Vue3 Diff 算法详解.md",
+    "JavaScript/Proxy 详解.md",
+    "JavaScript/Object.defineProperty 详解.md",
+    "Frontend/MicroFrontend/single-spa 介绍与核心原理.md",
+    "Frontend/MicroFrontend/微前端改造：常见问题、解决方案与后期维护.md",
+    "未命名.md",
+    "Frontend/MicroFrontend/qiankun（乾坤）核心设计与原理.md",
+    "面试/Vue 面试原理与考点详解.md",
+    "Frontend/Vue/Vue 双向绑定原理详解.md",
+    "Frontend/Vue",
+    "Browser/浏览器中 JS 沙箱的实现.md",
+    "React/React 性能优化思路与常用工具.md",
+    "Frontend/Web Components/Shadow DOM 与 Custom Element 详解.md",
+    "Frontend/Web Components",
     "Middleware/Redis/Redis 版本变更与演进历史.md",
-    "Middleware/Redis/Redis 生产环境问题与处理方案.md",
-    "Middleware/Redis/Redis 分布式锁实现方案.md",
-    "Middleware/Redis/Redis 如何实现动态扩缩容.md",
-    "Middleware/Redis/Redis 如何实现持久化.md",
-    "Middleware/Redis/Redis 核心原理与架构详解.md",
-    "Node.js/NestJS/NestJS 常见线上问题与排查方案.md",
+    "JavaScript/JavaScript AST（抽象语法树）详解.md",
+    "Java/ArrayList与LinkedList的区别与Java版本演进.md",
+    "JavaScript/JavaScript 是如何执行的.md",
+    "Java/JVM/Java 对象头（Object Header）详解.md",
+    "Java/JVM/JDK 垃圾收集器详解：原理与适用场景.md",
+    "Java/Spring/Spring AOP 实现原理详解.md",
+    "Java/Spring/Spring 循环依赖处理机制详解.md",
+    "Java/Spring/Spring Bean 懒加载实现方式.md",
+    "Java/JVM",
     "Node.js/NestJS",
-    "Java/String 在不同版本中的演进与优化.md",
-    "Git/Git Worktree.md",
-    "DistributedSystem/分布式异步任务调度.md",
-    "Java/Java 虚拟线程（Virtual Threads）详解.md",
-    "Java/Java 线程池详解：原理与生产环境最佳实践.md",
-    "Network/HTTP Request Methods 详解.md",
-    "面试/React 面试原理与考点详解.md",
-    "React/React Compiler 解析.md",
-    "CSS/CSS BFC（块级格式化上下文）.md",
-    "CSS/CSS 盒模型.md",
     "DistributedSystem",
     "AI/langchain",
     "CloudNative/Deployment",
     "AI/RAG",
     "AI",
     "CloudNative/Docker",
-    "SEO",
-    "Excalidraw",
     "未命名.canvas"
   ]
 }
